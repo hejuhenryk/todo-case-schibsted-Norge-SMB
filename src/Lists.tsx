@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { icon, titleValidation } from "./helpers";
+import { icon } from "./helpers";
 import { List } from "./AppContainer";
 import { TitleForm } from "./TitleForm";
 import { ListViewStyled, ListTitleStyled } from "./Lists.styled";
@@ -29,8 +29,7 @@ const AddList: React.FC<AddListProps> = p => (
   <TitleForm
     onSubmit={p.addList}
     placeHolder="Name your todo list"
-    titleValidation={titleValidation}
-    submitText={icon.add}
+    submitLabel={icon.add}
     label="New list"
   />
 );
@@ -71,9 +70,8 @@ const ListView: React.FC<ListViewProps> = ({ list, ...p }) => {
         <TitleForm
           initialValue={list.title}
           onSubmit={updateTitle}
-          titleValidation={titleValidation}
           label="Edit list name"
-          submitText={icon.save}
+          submitLabel={icon.save}
         />
         <button className="cancelBtn" onClick={() => setIsEditing(false)}>
           {icon.cancel}

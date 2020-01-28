@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { List, Todo } from "./AppContainer";
-import { icon, titleValidation } from "./helpers";
+import { icon } from "./helpers";
 import { TitleForm } from "./TitleForm";
 import { TodoTitle, TodoViewStyled } from "./List.styled";
 
@@ -27,8 +27,7 @@ type AddTodoProps = Pick<ListViewProps, "addTodo" | "list">;
 const AddTodo: React.FC<AddTodoProps> = p => (
   <TitleForm
     onSubmit={p.addTodo}
-    titleValidation={titleValidation}
-    submitText={icon.add}
+    submitLabel={icon.add}
     label="Add todo"
   />
 );
@@ -77,9 +76,8 @@ const Todo: React.FC<TodoProps> = ({ todo, updateTodo, removeTodo }) => {
         <TitleForm
           initialValue={todo.title}
           onSubmit={updateTitle}
-          titleValidation={titleValidation}
           label="Edit todo"
-          submitText={icon.save}
+          submitLabel={icon.save}
         />
         <button className="cancelBtn" onClick={() => setIsEdited(false)}>
           {icon.cancel}

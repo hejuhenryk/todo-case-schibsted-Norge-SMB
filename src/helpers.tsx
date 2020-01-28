@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+import { v4 } from "uuid";
 import React from 'react'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,12 +20,7 @@ export const icon = {
   home : <FontAwesomeIcon icon={faHome} />
 }
 
-export const getId = () => uuid();
+export const getId = () => v4();
 
-export const titleValidation = (title: string) => {
-  if (!title.length) {
-      return "Cannot be empty"
-  }
-  return null
-}
+
 
