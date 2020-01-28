@@ -53,20 +53,9 @@ const ListView: React.FC<ListViewProps> = ({ list, ...p }) => {
     p.editList({ ...list, title });
   };
 
-  let listView = (
-    <ListTitleStyled isEditing={isEditing}>
-      <Link to={`/${list.id}`}>
-        <h2>{list.title}</h2>
-      </Link>
-      <div>
-        <button onClick={() => setIsEditing(!isEditing)}>{icon.edit}</button>
-        <button onClick={() => p.removeList(list.id)}>{icon.del}</button>
-      </div>
-    </ListTitleStyled>
-  );
   if (isEditing) {
-    listView = (
-      <>
+    return (
+      <ListViewStyled>
         <TitleForm
           initialValue={list.title}
           onSubmit={updateTitle}
@@ -76,9 +65,21 @@ const ListView: React.FC<ListViewProps> = ({ list, ...p }) => {
         <button className="cancelBtn" onClick={() => setIsEditing(false)}>
           {icon.cancel}
         </button>
-      </>
+      </ListViewStyled>
     );
   }
 
-  return <ListViewStyled>{listView}</ListViewStyled>;
+  return (
+    <ListViewStyled>
+      <ListTitleStyled>
+        <Link to={`/${list.id}`}>
+          <h2>{list.title}</h2>
+        </Link>
+        <div>
+          <button onClick={() => setIsEditing(!isEditing)}>{icon.edit}</button>
+          <button onClick={() => p.removeList(list.id)}>{icon.del}</button>
+        </div>
+      </ListTitleStyled>
+    </ListViewStyled>
+  );
 };

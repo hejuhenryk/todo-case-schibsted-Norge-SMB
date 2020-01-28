@@ -25,11 +25,7 @@ export const ListView: React.FC<ListViewProps> = p => (
 
 type AddTodoProps = Pick<ListViewProps, "addTodo" | "list">;
 const AddTodo: React.FC<AddTodoProps> = p => (
-  <TitleForm
-    onSubmit={p.addTodo}
-    submitLabel={icon.add}
-    label="Add todo"
-  />
+  <TitleForm onSubmit={p.addTodo} submitLabel={icon.add} label="Add todo" />
 );
 
 type TodosProps = Pick<ListViewProps, "todos" | "updateTodo" | "removeTodo">;
@@ -59,20 +55,9 @@ const Todo: React.FC<TodoProps> = ({ todo, updateTodo, removeTodo }) => {
     setIsEdited(false);
     updateTodo({ ...todo, title });
   };
-  let todoView = (
-    <>
-      <TodoTitle isDone={todo.isDone}>
-        <h2 onClick={toggleDone}>{todo.title}</h2>
-        <div>
-          <button onClick={() => setIsEdited(true)}>{icon.edit}</button>
-          <button onClick={() => removeTodo(todo.id)}>{icon.del}</button>
-        </div>
-      </TodoTitle>
-    </>
-  );
   if (isEdited) {
-    todoView = (
-      <>
+    return (
+      <TodoViewStyled>
         <TitleForm
           initialValue={todo.title}
           onSubmit={updateTitle}
@@ -82,9 +67,19 @@ const Todo: React.FC<TodoProps> = ({ todo, updateTodo, removeTodo }) => {
         <button className="cancelBtn" onClick={() => setIsEdited(false)}>
           {icon.cancel}
         </button>
-      </>
+      </TodoViewStyled>
     );
   }
 
-  return <TodoViewStyled>{todoView}</TodoViewStyled>;
+  return (
+    <TodoViewStyled>
+      <TodoTitle isDone={todo.isDone}>
+        <h2 onClick={toggleDone}>{todo.title}</h2>
+        <div>
+          <button onClick={() => setIsEdited(true)}>{icon.edit}</button>
+          <button onClick={() => removeTodo(todo.id)}>{icon.del}</button>
+        </div>
+      </TodoTitle>
+    </TodoViewStyled>
+  );
 };

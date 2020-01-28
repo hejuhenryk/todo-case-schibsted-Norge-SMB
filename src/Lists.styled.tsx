@@ -18,14 +18,13 @@ export const ListViewStyled = styled.div`
   }
 `;
 
-export const ListTitleStyled = styled.div<{ isEditing: boolean }>`
+export const ListTitleStyled = styled.div`
   width: 100%;
   height: 2.8rem;
   position: relative;
   display: flex;
   justify-content: space-between;
-  border: ${props =>
-    !props.isEditing ? " black dashed 2px" : "black solid 1px"};
+  border: black dashed 2px;
   border-width: 0 0 2px 0;
   margin: 1.3rem auto;
   button {
