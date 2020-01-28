@@ -10,7 +10,7 @@
 ## Todo App Beskrivelse
 
     AppContainer - strukturen og logiken 
-        - aplikasjons state er lagred i lokal mine med cutome hook usePersistentState.ts
+        - aplikasjons state er lagred i lokal mine med custome hook usePersistentState.ts
         - state og logiken fintes i AppContainer.tsx
         - AppContainer bruker react-router og renderer resten av aplikasjonen
         - Toolbar renderer navigasjonen melom listene
