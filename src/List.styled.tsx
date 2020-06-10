@@ -32,6 +32,7 @@ export const TodoTitle = styled.div<{ isDone: boolean | undefined }>`
   h2 {
     text-decoration: ${p => (p.isDone ? "line-through" : "none")};
     cursor: pointer;
+    /* white-space: nowrap; */
   }
   div {
     display: flex;

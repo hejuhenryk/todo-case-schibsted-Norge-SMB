@@ -30,6 +30,10 @@ type Store = {
 const SectionStyled = styled.section`
   width: 68%;
   margin: 0 auto;
+  /* transition: all .5s ease-in-out; */
+  @media (max-width: 450px) {
+    width: 90%;
+  }
 `
 
 // app
