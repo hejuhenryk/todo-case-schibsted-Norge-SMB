@@ -11,7 +11,7 @@
 /dist/*
 /.cache
 
-
+!dist/.gitkeep
 
 # misc
 .DS_Store
